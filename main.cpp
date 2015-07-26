@@ -1,6 +1,7 @@
 #include<iostream>
 #include<sys/types.h>
 #include<sstream>
+#include<unistd.h>
 #include<string>
 #include<sys/ipc.h>
 #include<stdio.h>
@@ -33,7 +34,7 @@ int main(int args, char** argv){
     string line;
     int pid = -1;
 
-    const int MAX_WEIGHT = strtol(argv[1], NULL, 0);
+    const int MAX_WEIGHT = atoi(argv[1]);
 
     cout<<i<<"\n";
     //argv[1] = NULL;
@@ -66,19 +67,22 @@ int main(int args, char** argv){
     }*/
     
     for(list<Car>::iterator it = carsList.begin(); it != carsList.end(); ++it){
-        Car newCar = it*;
+        //Car newCar = *it;
 
         pid = fork();
         if(pid == 0){
+            Car newCar = *it;
             cout<<"Waiting "<<newCar.secondsArrival<<" seconds."<<endl;
             sleep(newCar.secondsArrival);
+            break;
 
+        }
+        if(pid > 0)
+        {
+            wait(NULL);
         }
 
 
-    }
-    if(pid > 0){
-        wait(NULL);
     }
 
 
