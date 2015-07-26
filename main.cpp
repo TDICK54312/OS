@@ -34,10 +34,9 @@ int main(int args, char** argv){
     string line;
     int pid = -1;
 
-    const int MAX_WEIGHT = atoi(argv[1]);
+    unsigned int MAX_WEIGHT = atoi(argv[1]);
 
     cout<<MAX_WEIGHT<<"\n";
-    //argv[1] = NULL;
 
     while(getline(cin,line)){
         stringstream ssin(line);
@@ -74,6 +73,9 @@ int main(int args, char** argv){
             Car newCar = *it;
             cout<<"Waiting "<<newCar.secondsArrival<<" seconds."<<endl;
             sleep(newCar.secondsArrival);
+            
+            
+
             break;
 
         }
