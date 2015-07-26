@@ -36,7 +36,7 @@ int main(int args, char** argv){
 
     const int MAX_WEIGHT = atoi(argv[1]);
 
-    cout<<i<<"\n";
+    cout<<MAX_WEIGHT<<"\n";
     //argv[1] = NULL;
 
     while(getline(cin,line)){
