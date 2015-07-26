@@ -31,6 +31,7 @@ int main(int args, char** argv){
     int count = 0;
     string stuff[4];
     string line;
+    int pid = -1;
 
     const int MAX_WEIGHT = strtol(argv[1], NULL, 0);
 
@@ -58,15 +59,27 @@ int main(int args, char** argv){
         count++;
     }
     //Just making sure the list was getting all the values it need *works*
-    for(list<Car>::iterator it = carsList.begin(); it != carsList.end(); ++it){
+    /*for(list<Car>::iterator it = carsList.begin(); it != carsList.end(); ++it){
         Car m = *it;
 
         cout<<"License Plate #: "<<m.plate<<" Enters at: "<<m.secondsArrival<<" Car weight: "<<m.carWeight<<" Leaving at: "<<m.secondsLeave<<endl;
-    }
-    /*
-    for(list<Car>::iterator it = carsList.begin(); it != carsList.end(); ++it){
-
     }*/
+    
+    for(list<Car>::iterator it = carsList.begin(); it != carsList.end(); ++it){
+        Car newCar = it*;
+
+        pid = fork();
+        if(pid == 0){
+            cout<<"Waiting "<<newCar.secondsArrival<<" seconds."<<endl;
+            sleep(newCar.secondsArrival);
+
+        }
+
+
+    }
+    if(pid > 0){
+        wait(NULL);
+    }
 
 
     return 0;
